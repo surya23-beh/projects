@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Signup Form</title>
+    <link rel="stylesheet" href="/Suryanc/Suryanc/Bike_Rental_platform/css/loginstyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+  <body>
+
+    
+      <div class="container">0
+          <div class="form-box login">
+              <form action="#">
+                  <h1>Login</h1>
+                  <div class="input-box">
+                      <input type="text" placeholder="name" required>
+                      <i class='bx bxs-user'></i>
+                  </div>
+                  <div class="input-box">
+                      <input type="tel" placeholder="phone" required>
+                      <i class="fa-solid fa-mobile-screen-button"></i>
+                  </div>
+
+                  <button class="btn2 register-btn">get otp</button>
+              </form>
+          </div>
+
+          <div class="form-box register">
+              <form action="#">
+                  <h1>Verification</h1>
+                  <div class="input-box">
+                      <input type="tel" placeholder="" required>
+                      <i class='bx bxs-user'></i>
+                  </div>
+                  <button type="submit" class="btn2">verify otp</button>
+              </form>
+          </div>
+
+          <div class="toggle-box">
+              <div class="toggle-panel toggle-left">
+                  <h1>  </h1>
+              </div>
+
+              <div class="toggle-panel toggle-right">
+                  <h1>Welcome Back!</h1>
+                  <a href="/Suryanc/Suryanc/Bike_Rental_platform/html/index.html">
+                  <button class="btn2 login-btn">Login</button>
+                  </a>
+              </div>
+          </div>
+      </div>
+<!-- created and posted by MS Prime Tech Services -->
+
+      <script>
+        const container = document.querySelector('.container');
+const registerBtn = document.querySelector('.register-btn');
+
+
+registerBtn.addEventListener('click', () => {
+    container.classList.add('active');
+})
+
+loginBtn.addEventListener('click', () => {
+    container.classList.remove('active');
+})
+      </script>
+  </body>
+</html>
