@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Bike - BikeShare</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/Suryanc/Suryanc/Bike_Rental_platform/css/index.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .form-section {
+            background: linear-gradient(rgba(255,255,255,0.95), rgba(255,255,255,0.95)), url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 12px 15px;
+            border: 2px solid #e1e5eb;
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .image-upload-container {
+            border: 2px dashed #3498db;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            background-color: rgba(236, 240, 241, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .image-upload-container:hover {
+            background-color: rgba(236, 240, 241, 0.8);
+            transform: translateY(-3px);
+        }
+        
+        .image-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .image-preview {
+            width: 120px;
+            height: 120px;
+            border-radius: 10px;
+            object-fit: cover;
+            border: 2px solid #e1e5eb;
+        }
+        
+        .feature-card {
+            border: 2px solid #e1e5eb;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        
+        .feature-card:hover {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.05);
+        }
+        
+        .feature-card.selected {
+            border-color: var(--primary);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .info-card h5 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .price-preview {
+            background: linear-gradient(135deg, var(--secondary), #27ae60);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .step-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .step-indicator:before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #e1e5eb;
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+            width: 25%;
+        }
+        
+        .step-number {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e1e5eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            font-weight: bold;
+            color: #7f8c8d;
+        }
+        
+        .step.active .step-number {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .step-label {
+            font-size: 14px;
+            color: #7f8c8d;
+        }
+        
+        .step.active .step-label {
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .progress-bar {
+            position: absolute;
+            top: 20px;
+            left: 0;
+            height: 3px;
+            background-color: var(--primary);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+        
+        .bike-preview {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .bike-preview:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .form-step {
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .summary-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .availability-day {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .time-inputs {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+        
+        .highlight {
+            background-color: rgba(46, 204, 113, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            border-left: 3px solid var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                <span class="fw-bold">ishowbikes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="findbikes.html">Find Bikes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registerpage.html">Register/login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin-loginpage.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container my-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="form-section">
+                    <h2 class="section-title">Add Your Bike for Rental</h2>
+                    <p class="text-muted mb-4">Fill in the details below to list your bike and start earning</p>
+                    
+                    <!-- Step Indicator -->
+                    <div class="step-indicator mb-5">
+                        <div id="form-progress" class="progress-bar" style="width: 25%;"></div>
+                        <div class="step active">
+                            <div class="step-number">1</div>
+                            <div class="step-label">Bike Details</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-label">Pricing & Location</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-label">Availability</div>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-label">Review</div>
+                        </div>
+                    </div>
+                    
+                    <!-- Bike Details Form -->
+                    <form id="bikeForm">
+                        <!-- Step 1: Bike Details -->
+                        <div id="step1" class="form-step">
+                            <h5 class="mb-3">Basic Information</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Bike Model</label>
+                                    <input type="text" class="form-control" id="bike-model" placeholder="e.g., Royal Enfield Classic 350" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Manufacturer</label>
+                                    <select class="form-select" id="bike-manufacturer" required>
+                                        <option value="">Select Manufacturer</option>
+                                        <option>Royal Enfield</option>
+                                        <option>Honda</option>
+                                        <option>TVS</option>
+                                        <option>Bajaj</option>
+                                        <option>Yamaha</option>
+                                        <option>Suzuki</option>
+                                        <option>KTM</option>
+                                        <option>Hero</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Year of Manufacture</label>
+                                    <input type="number" class="form-control" id="bike-year" placeholder="e.g., 2020" min="2000" max="2023" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Registration Number</label>
+                                    <input type="text" class="form-control" id="bike-registration" placeholder="e.g., KA01AB1234" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Mileage (kmpl)</label>
+                                    <input type="number" class="form-control" id="bike-mileage" placeholder="e.g., 40" min="10" max="100" required>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Fuel Type</label>
+                                    <select class="form-select" id="bike-fuel" required>
+                                        <option value="">Select Fuel Type</option>
+                                        <option>Petrol</option>
+                                        <option>Diesel</option>
+                                        <option>Electric</option>
+                                        <option>CNG</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Engine CC</label>
+                                    <input type="number" class="form-control" id="bike-cc" placeholder="e.g., 350" min="50" max="2000" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Color</label>
+                                    <input type="text" class="form-control" id="bike-color" placeholder="e.g., Black" required>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mb-3 mt-4">Bike Features</h5>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="feature-card" data-feature="helmet">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="helmet">
+                                            <label class="form-check-label" for="helmet">
+                                                <i class="fas fa-helmet-safety me-2"></i> Helmet Included
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feature-card" data-feature="lock">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="lock">
+                                            <label class="form-check-label" for="lock">
+                                                <i class="fas fa-lock me-2"></i> Bike Lock Included
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feature-card" data-feature="documents">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="documents">
+                                            <label class="form-check-label" for="documents">
+                                                <i class="fas fa-file-contract me-2"></i> All Documents Available
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="feature-card" data-feature="insurance">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="insurance">
+                                            <label class="form-check-label" for="insurance">
+                                                <i class="fas fa-shield-alt me-2"></i> Insurance Valid
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mb-3 mt-4">Bike Description</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" id="bike-description" rows="4" placeholder="Describe your bike, its condition, special features, etc." required></textarea>
+                            </div>
+                            
+                            <h5 class="mb-3 mt-4">Upload Bike Photos</h5>
+                            <div class="image-upload-container" id="imageUpload">
+                                <i class="fas fa-cloud-upload-alt fa-3x mb-3 text-primary"></i>
+                                <h5>Drag & Drop or Click to Upload</h5>
+                                <p class="text-muted">Upload clear photos of your bike from different angles (Max 5 photos)</p>
+                                <input type="file" id="fileInput" accept="image/*" multiple style="display: none;">
+                            </div>
+                            <div class="image-preview-container" id="imagePreview">
+                                <!-- Image previews will be added here -->
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-5">
+                                <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='user-dashboard.html'">
+                                    <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(2)">
+                                    Next Step <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 2: Pricing & Location -->
+                        <div id="step2" class="form-step hidden">
+                            <h5 class="mb-3">Pricing Information</h5>
+                            <div class="row">
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Hourly Rate (₹)</label>
+                                    <input type="number" class="form-control" id="hourly-rate" placeholder="e.g., 100" min="20" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Daily Rate (₹)</label>
+                                    <input type="number" class="form-control" id="daily-rate" placeholder="e.g., 700" min="100" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Security Deposit (₹)</label>
+                                    <input type="number" class="form-control" id="security-deposit" placeholder="e.g., 2000" min="500" required>
+                                </div>
+                            </div>
+                            
+                            <div class="highlight mb-4">
+                                <p class="mb-1"><i class="fas fa-lightbulb me-2"></i> Based on similar bikes in your area, we recommend:</p>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span>Hourly: ₹80-120</span>
+                                    <span>Daily: ₹600-900</span>
+                                    <span>Deposit: ₹1500-2500</span>
+                                </div>
+                            </div>
+                            
+                            <h5 class="mb-3 mt-4">Location Details</h5>
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-control" id="address" placeholder="Street address" required>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-control" id="city" placeholder="City" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">State</label>
+                                    <input type="text" class="form-control" id="state" placeholder="State" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Postal Code</label>
+                                    <input type="text" class="form-control" id="postal-code" placeholder="e.g., 560034" required>
+                                </div>
+                                <div class="col-md-4 mb-3">
+                                    <label class="form-label">Landmark</label>
+                                    <input type="text" class="form-control" id="landmark" placeholder="Nearby landmark">
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-5">
+                                <button type="button" class="btn btn-outline-secondary" onclick="prevStep(1)">
+                                    <i class="fas fa-arrow-left me-2"></i>Previous Step
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(3)">
+                                    Next Step <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 3: Availability -->
+                        <div id="step3" class="form-step hidden">
+                            <h5 class="mb-3">Set Your Availability</h5>
+                            <p class="text-muted mb-4">Select the days and times when your bike is available for rental</p>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="monday-check" checked>
+                                    <label class="form-check-label" for="monday-check">Monday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="monday-start" value="09:00">
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="monday-end" value="17:00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="tuesday-check" checked>
+                                    <label class="form-check-label" for="tuesday-check">Tuesday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="tuesday-start" value="09:00">
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="tuesday-end" value="17:00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="wednesday-check" checked>
+                                    <label class="form-check-label" for="wednesday-check">Wednesday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="wednesday-start" value="09:00">
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="wednesday-end" value="17:00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="thursday-check" checked>
+                                    <label class="form-check-label" for="thursday-check">Thursday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="thursday-start" value="09:00">
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="thursday-end" value="17:00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="friday-check" checked>
+                                    <label class="form-check-label" for="friday-check">Friday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="friday-start" value="09:00">
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="friday-end" value="17:00">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="saturday-check">
+                                    <label class="form-check-label" for="saturday-check">Saturday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="saturday-start" value="10:00" disabled>
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="saturday-end" value="15:00" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="availability-day">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="sunday-check">
+                                    <label class="form-check-label" for="sunday-check">Sunday</label>
+                                </div>
+                                <div class="time-inputs mt-2">
+                                    <div class="w-50">
+                                        <label class="form-label">Start Time</label>
+                                        <input type="time" class="form-control" id="sunday-start" value="10:00" disabled>
+                                    </div>
+                                    <div class="w-50">
+                                        <label class="form-label">End Time</label>
+                                        <input type="time" class="form-control" id="sunday-end" value="15:00" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-5">
+                                <button type="button" class="btn btn-outline-secondary" onclick="prevStep(2)">
+                                    <i class="fas fa-arrow-left me-2"></i>Previous Step
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="nextStep(4)">
+                                    Next Step <i class="fas fa-arrow-right ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 4: Review & Submit -->
+                        <div id="step4" class="form-step hidden">
+                            <h5 class="mb-3">Review Your Bike Details</h5>
+                            <p class="text-muted mb-4">Please review all information before submitting</p>
+                            
+                            <div class="card mb-4">
+                                <div class="card-header bg-light">
+                                    <h5>Bike Information</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="summary-item">
+                                        <strong>Model:</strong> <span id="summary-model"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Manufacturer:</strong> <span id="summary-manufacturer"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Year:</strong> <span id="summary-year"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Registration:</strong> <span id="summary-registration"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Features:</strong> <span id="summary-features"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-4">
+                                <div class="card-header bg-light">
+                                    <h5>Pricing & Location</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="summary-item">
+                                        <strong>Hourly Rate:</strong> ₹<span id="summary-hourly"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Daily Rate:</strong> ₹<span id="summary-daily"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Security Deposit:</strong> ₹<span id="summary-deposit"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Location:</strong> <span id="summary-location"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card mb-4">
+                                <div class="card-header bg-light">
+                                    <h5>Availability</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="summary-item">
+                                        <strong>Available Days:</strong> <span id="summary-days"></span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <strong>Hours:</strong> <span id="summary-hours"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-check mb-4">
+                                <input class="form-check-input" type="checkbox" id="terms-agree" required>
+                                <label class="form-check-label" for="terms-agree">
+                                    I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a> and confirm that all information provided is accurate.
+                                </label>
+                            </div>
+                            
+                            <div class="d-flex justify-content-between mt-4">
+                                <button type="button" class="btn btn-outline-secondary" onclick="prevStep(3)">
+                                    <i class="fas fa-arrow-left me-2"></i>Previous Step
+                                </button>
+                                <button type="button" class="btn btn-success" onclick="submitForm()">
+                                    <i class="fas fa-check-circle me-2"></i>Submit Listing
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Preview and Info Sidebar -->
+            <div class="col-lg-4">
+                <div class="" style="top: 20px;">
+                    <div class="info-card mb-4">
+                        <h5><i class="fas fa-lightbulb me-2"></i> Tips for Listing</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item ps-0 border-0">• Use clear, well-lit photos of your bike</li>
+                            <li class="list-group-item ps-0 border-0">• Be honest about your bike's condition</li>
+                            <li class="list-group-item ps-0 border-0">• Set competitive pricing based on similar bikes</li>
+                            <li class="list-group-item ps-0 border-0">• Specify exact pickup location for renters</li>
+                            <li class="list-group-item ps-0 border-0">• Include helmet and lock to increase bookings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="price-preview mb-4">
+                        <h4 class="mb-3">Estimated Earnings</h4>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Average Daily Rentals:</span>
+                            <span>3-5 hours</span>
+                        </div>
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Suggested Hourly Rate:</span>
+                            <span>₹80-120</span>
+                        </div>
+                        <hr class="bg-light">
+                        <div class="d-flex justify-content-between mb-3">
+                            <span class="h5">Monthly Potential:</span>
+                            <span class="h5">₹8,000 - ₹15,000</span>
+                        </div>
+                        <p class="small mb-0">* Based on similar bikes in your area</p>
+                    </div>
+                    
+                    <div class="bike-preview">
+                        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" class="img-fluid" alt="Bike Preview">
+                        <div class="p-3">
+                            <h5 id="preview-model">Royal Enfield Classic 350</h5>
+                            <div class="d-flex justify-content-between mb-2">
+                                <span><i class="fas fa-gas-pump me-1"></i> <span id="preview-mileage">35</span> kmpl</span>
+                                <span><i class="fas fa-calendar me-1"></i> <span id="preview-year">2020</span></span>
+                            </div>
+                            <p class="mb-3" id="preview-description">Premium black edition with leather seats and custom exhaust</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">₹<span id="preview-price">100</span>/hr</h4>
+                                <span class="badge bg-success" id="preview-location">Koramangala</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>BikeShare</h4>
+                    <p>Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-btn bg-facebook me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn bg-twitter me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn bg-instagram me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn bg-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bikes</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Rental</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Sharing</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Delivery Partners</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Corporate Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Verification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Bangalore, India</li>
+                        <li class="mb-3"><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@bikeshare.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-light">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 BikeShare. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body text-center p-5">
+                    <div class="text-success mb-4">
+                        <i class="fas fa-check-circle fa-5x"></i>
+                    </div>
+                    <h3 class="mb-3">Bike Listed Successfully!</h3>
+                    <p class="mb-4">Your bike has been listed and is now available for rental. You can manage your listing in your dashboard.</p>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="window.location.href='admin-dashboard.html'">
+                        Go to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Current step tracking
+        let currentStep = 1;
+        
+        // Feature card selection
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const checkbox = this.querySelector('input[type="checkbox"]');
+                checkbox.checked = !checkbox.checked;
+                
+                if (checkbox.checked) {
+                    this.classList.add('selected');
+                } else {
+                    this.classList.remove('selected');
+                }
+                
+                // Update preview if on step 1
+                if(currentStep === 1) {
+                    updatePreview();
+                }
+            });
+        });
+
+        // Image upload functionality
+        const imageUpload = document.getElementById('imageUpload');
+        const fileInput = document.getElementById('fileInput');
+        const imagePreview = document.getElementById('imagePreview');
+        
+        imageUpload.addEventListener('click', () => {
+            fileInput.click();
+        });
+        
+        fileInput.addEventListener('change', function() {
+            imagePreview.innerHTML = '';
+            
+            if (this.files && this.files.length > 0) {
+                // Limit to 5 images
+                const files = Array.from(this.files).slice(0, 5);
+                
+                files.forEach(file => {
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.classList.add('image-preview');
+                        imagePreview.appendChild(img);
+                    }
+                    
+                    reader.readAsDataURL(file);
+                });
+            }
+        });
+
+        // Allow drag and drop
+        imageUpload.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.style.backgroundColor = 'rgba(52, 152, 219, 0.1)';
+        });
+        
+        imageUpload.addEventListener('dragleave', function() {
+            this.style.backgroundColor = 'rgba(236, 240, 241, 0.5)';
+        });
+        
+        imageUpload.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.style.backgroundColor = 'rgba(236, 240, 241, 0.5)';
+            
+            if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                fileInput.files = e.dataTransfer.files;
+                const event = new Event('change', { bubbles: true });
+                fileInput.dispatchEvent(event);
+            }
+        });
+        
+        // Form navigation functions
+        function nextStep(step) {
+            // Validate current step before proceeding
+            if(!validateStep(currentStep)) {
+                return;
+            }
+            
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            
+            // Show next step
+            document.getElementById(`step${step}`).classList.remove('hidden');
+            
+            // Update step indicators
+            updateStepIndicator(step);
+            
+            // Update preview
+            updatePreview();
+            
+            // Update current step
+            currentStep = step;
+            
+            // If moving to review step, populate summary
+            if(step === 4) {
+                populateSummary();
+            }
+        }
+        
+        function prevStep(step) {
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.add('hidden');
+            
+            // Show previous step
+            document.getElementById(`step${step}`).classList.remove('hidden');
+            
+            // Update step indicators
+            updateStepIndicator(step);
+            
+            // Update current step
+            currentStep = step;
+        }
+        
+        function updateStepIndicator(step) {
+            // Update progress bar
+            const progress = (step - 1) * 33.33;
+            document.getElementById('form-progress').style.width = `${progress}%`;
+            
+            // Update step indicators
+            document.querySelectorAll('.step').forEach((stepEl, index) => {
+                if(index < step) {
+                    stepEl.classList.add('active');
+                } else {
+                    stepEl.classList.remove('active');
+                }
+            });
+        }
+        
+        function validateStep(step) {
+            // Simple validation for demo purposes
+            if(step === 1) {
+                const model = document.getElementById('bike-model').value;
+                if(!model) {
+                    alert('Please enter the bike model');
+                    return false;
+                }
+            }
+            return true;
+        }
+        
+        function updatePreview() {
+            // Update bike preview card with entered data
+            if(document.getElementById('bike-model').value) {
+                document.getElementById('preview-model').textContent = document.getElementById('bike-model').value;
+            }
+            
+            if(document.getElementById('bike-year').value) {
+                document.getElementById('preview-year').textContent = document.getElementById('bike-year').value;
+            }
+            
+            if(document.getElementById('bike-mileage').value) {
+                document.getElementById('preview-mileage').textContent = document.getElementById('bike-mileage').value;
+            }
+            
+            if(document.getElementById('bike-description').value) {
+                document.getElementById('preview-description').textContent = document.getElementById('bike-description').value;
+            }
+            
+            if(document.getElementById('hourly-rate').value) {
+                document.getElementById('preview-price').textContent = document.getElementById('hourly-rate').value;
+            }
+            
+            if(document.getElementById('city').value) {
+                document.getElementById('preview-location').textContent = document.getElementById('city').value;
+            }
+        }
+        
+        function populateSummary() {
+            // Bike information
+            document.getElementById('summary-model').textContent = document.getElementById('bike-model').value;
+            document.getElementById('summary-manufacturer').textContent = document.getElementById('bike-manufacturer').value;
+            document.getElementById('summary-year').textContent = document.getElementById('bike-year').value;
+            document.getElementById('summary-registration').textContent = document.getElementById('bike-registration').value;
+            
+            // Features
+            const features = [];
+            if(document.getElementById('helmet').checked) features.push('Helmet');
+            if(document.getElementById('lock').checked) features.push('Lock');
+            if(document.getElementById('documents').checked) features.push('Documents');
+            if(document.getElementById('insurance').checked) features.push('Insurance');
+            document.getElementById('summary-features').textContent = features.join(', ') || 'None';
+            
+            // Pricing
+            document.getElementById('summary-hourly').textContent = document.getElementById('hourly-rate').value;
+            document.getElementById('summary-daily').textContent = document.getElementById('daily-rate').value;
+            document.getElementById('summary-deposit').textContent = document.getElementById('security-deposit').value;
+            
+            // Location
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            document.getElementById('summary-location').textContent = `${address}, ${city}`;
+            
+            // Availability
+            const days = [];
+            if(document.getElementById('monday-check').checked) days.push('Mon');
+            if(document.getElementById('tuesday-check').checked) days.push('Tue');
+            if(document.getElementById('wednesday-check').checked) days.push('Wed');
+            if(document.getElementById('thursday-check').checked) days.push('Thu');
+            if(document.getElementById('friday-check').checked) days.push('Fri');
+            if(document.getElementById('saturday-check').checked) days.push('Sat');
+            if(document.getElementById('sunday-check').checked) days.push('Sun');
+            document.getElementById('summary-days').textContent = days.join(', ') || 'None';
+            
+            document.getElementById('summary-hours').textContent = 
+                `${document.getElementById('monday-start').value} - ${document.getElementById('monday-end').value}`;
+        }
+        
+        function submitForm() {
+            // Simple validation for terms agreement
+            if(!document.getElementById('terms-agree').checked) {
+                alert('Please agree to the terms and conditions');
+                return;
+            }
+            
+            // Show success modal
+            const successModal = new bootstrap.Modal(document.getElementById('successModal'));
+            successModal.show();
+        }
+        
+        // Enable/disable time inputs based on day selection
+        document.querySelectorAll('.form-check-input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const day = this.id.replace('-check', '');
+                const startInput = document.getElementById(`${day}-start`);
+                const endInput = document.getElementById(`${day}-end`);
+                
+                if(this.checked) {
+                    startInput.disabled = false;
+                    endInput.disabled = false;
+                } else {
+                    startInput.disabled = true;
+                    endInput.disabled = true;
+                }
+            });
+        });
+        
+        // Initialize preview with default values
+        updatePreview();
+    </script>
+</body>
+</html>

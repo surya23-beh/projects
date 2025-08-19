@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find-bikes</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/Suryanc/Suryanc/Bike_Rental_platform/css/index.css">
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                <span class="fw-bold">ishowbikes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="findbikes.html">Find Bikes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registerpage.html">Register/login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin-loginpage.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+     <div id="bikes-page">
+            <section class="page-section">
+                <div class="container">
+                    <h2 class="text-center section-title mb-5">Find Available Bikes</h2>
+                    
+                    <div class="row mb-5">
+                        <div class="col-md-4">
+                            <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Filter Bikes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" placeholder="Enter location">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Bike Type</label>
+                                        <select class="form-select">
+                                            <option selected>All Types</option>
+                                            <option>Scooter</option>
+                                            <option>Motorcycle</option>
+                                            <option>Electric Bike</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Price Range (per hour)</label>
+                                        <input type="range" class="form-range" min="20" max="200" step="10" value="80">
+                                        <div class="d-flex justify-content-between">
+                                            <span>₹20</span>
+                                            <span>₹80</span>
+                                            <span>₹200</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Mileage</label>
+                                        <select class="form-select">
+                                            <option selected>Any</option>
+                                            <option>40+ kmpl</option>
+                                            <option>50+ kmpl</option>
+                                            <option>60+ kmpl</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <button class="btn bg-primary text-white w-100">Apply Filters</button>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="map-container" id="map"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-8">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <h4 class="mb-0">24 Bikes Available Nearby</h4>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary">Sort by Price</button>
+                                    <button class="btn btn-outline-primary">Sort by Distance</button>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <!-- Bike 1 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="bike-card card h-100">
+                                        <div class="position-relative">
+                                            <img src="/Suryanc/Suryanc/Bike_Rental_platform/Assets/re.avif" class="card-img-top" alt="Bike">
+                                            <span class="badge bg-success position-absolute top-0 end-0 m-2">Available Now</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Royal Enfield Classic 350</h5>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span><i class="fas fa-gas-pump me-1"></i> 35 kmpl</span>
+                                                <span><i class="fas fa-tachometer-alt me-1"></i> 15,000 km</span>
+                                            </div>
+                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>1.2 km away - Koramangala</p>
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <h4 class="mb-0">₹100/hr</h4>
+                                                <button class="btn bg-primary text-whitw" onclick="showPage('confirmation')">Rent Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bike 2 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="bike-card card h-100">
+                                        <div class="position-relative">
+                                            <img src="/Suryanc/Suryanc/Bike_Rental_platform/Assets/activa.jpeg" class="card-img-top" alt="Bike">
+                                            <span class="badge bg-success position-absolute top-0 end-0 m-2">Available Now</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Honda Activa 6G</h5>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span><i class="fas fa-gas-pump me-1"></i> 45 kmpl</span>
+                                                <span><i class="fas fa-tachometer-alt me-1"></i> 8,500 km</span>
+                                            </div>
+                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>0.8 km away - HSR Layout</p>
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <h4 class="mb-0">₹70/hr</h4>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation')">Rent Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bike 3 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="bike-card card h-100">
+                                        <div class="position-relative">
+                                            <img src="/Suryanc/Suryanc/Bike_Rental_platform/Assets/2022-TVS-Apache-RTR-160-Specs.jpg" class="card-img-top" alt="Bike">
+                                            <span class="badge bg-warning position-absolute top-0 end-0 m-2">Available in 1h</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">TVS Apache RTR 160</h5>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span><i class="fas fa-gas-pump me-1"></i> 40 kmpl</span>
+                                                <span><i class="fas fa-tachometer-alt me-1"></i> 12,300 km</span>
+                                            </div>
+                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>2.1 km away - Indiranagar</p>
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <h4 class="mb-0">₹90/hr</h4>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation')">Rent Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Bike 4 -->
+                                <div class="col-md-6 mb-4">
+                                    <div class="bike-card card h-100">
+                                        <div class="position-relative">
+                                            <img src="/Suryanc/Suryanc/Bike_Rental_platform/Assets/bajaj-pulsar-ns200-bike.jpg" class="card-img-top" alt="Bike">
+                                            <span class="badge bg-success position-absolute top-0 end-0 m-2">Available Now</span>
+                                        </div>
+                                        <div class="card-body">
+                                            <h5 class="card-title">Bajaj Pulsar NS200</h5>
+                                            <div class="d-flex justify-content-between mb-2">
+                                                <span><i class="fas fa-gas-pump me-1"></i> 35 kmpl</span>
+                                                <span><i class="fas fa-tachometer-alt me-1"></i> 9,800 km</span>
+                                            </div>
+                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>1.5 km away - Jayanagar</p>
+                                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                                <h4 class="mb-0">₹95/hr</h4>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation')">Rent Now</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Confirmation Page -->
+        <div id="confirmation-page" class="hidden">
+            <section class="page-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10 col-lg-8">
+                            <div class="card border-0 shadow">
+                                <div class="card-header bg-success text-white py-3">
+                                    <h3 class="mb-0 text-center"><i class="fas fa-check-circle me-2"></i>Booking Confirmed!</h3>
+                                </div>
+                                <div class="card-body p-4">
+                                    <div class="alert alert-success">
+                                        <h5><i class="fas fa-info-circle me-2"></i>Your booking is confirmed and the owner has been notified</h5>
+                                    </div>
+                                    
+                                    <div class="row mb-4">
+                                        <div class="col-md-4 text-center">
+                                            <img src="Assets/re.avif" class="img-fluid rounded" alt="Bike">
+                                        </div>
+                                        <div class="col-md-8">
+                                            <h3>Royal Enfield Classic 350</h3>
+                                            <div class="d-flex mb-3">
+                                                <span class="badge bg-primary me-2">Petrol</span>
+                                                <span class="badge bg-info me-2">350cc</span>
+                                                <span class="badge bg-success">45 kmpl</span>
+                                            </div>
+                                            <p><i class="fas fa-user me-2"></i><strong>Owner:</strong> Rajesh Kumar</p>
+                                            <p><i class="fas fa-map-marker-alt me-2"></i><strong>Pickup Location:</strong> Koramangala 5th Block, Bangalore</p>
+                                            <p><i class="fas fa-phone me-2"></i><strong>Contact:</strong> +91 98765 43210</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="row mb-4">
+                                        <div class="col-md-6">
+                                            <div class="card h-100">
+                                                <div class="card-header bg-light">
+                                                    <h5 class="mb-0">Booking Details</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <p><i class="far fa-calendar me-2"></i><strong>Date:</strong> 15 August 2023</p>
+                                                    <p><i class="far fa-clock me-2"></i><strong>Time:</strong> 10:00 AM - 5:00 PM (7 hours)</p>
+                                                    <p><i class="fas fa-rupee-sign me-2"></i><strong>Rate:</strong> ₹100/hour</p>
+                                                    <hr>
+                                                    <h5 class="d-flex justify-content-between">
+                                                        <span>Total Amount:</span>
+                                                        <span>₹700</span>
+                                                    </h5>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card h-100">
+                                                <div class="card-header bg-light">
+                                                    <h5 class="mb-0">Important Instructions</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                    <ul class="list-group list-group-flush">
+                                                        <li class="list-group-item">1. Bring original ID proof for verification</li>
+                                                        <li class="list-group-item">2. Security deposit of ₹2000 required</li>
+                                                        <li class="list-group-item">3. Fuel charges are extra</li>
+                                                        <li class="list-group-item">4. Late return penalty ₹200/hour</li>
+                                                        <li class="list-group-item">5. Report any damage immediately</li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="alert alert-warning">
+                                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Safety & Responsibility</h5>
+                                        <p class="mb-0">You are responsible for the bike during rental period. Any traffic violations or damages will be charged to you. Please ride safely and follow all traffic rules.</p>
+                                    </div>
+                                    
+                                    <div class="text-center mt-4">
+                                        <button class="btn btn-primary me-3" onclick="showPage('dashboard')">
+                                            <i class="fas fa-tachometer-alt me-2"></i>Go to Dashboard
+                                        </button>
+                                        <button class="btn btn-outline-primary" onclick="showPage('tracking')">
+                                            <i class="fas fa-map-marked-alt me-2"></i>Track Bike Location
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+ <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>BikeShare</h4>
+                    <p>Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-btn bg-facebook me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn bg-twitter me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn bg-instagram me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn bg-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bikes</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Rental</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Sharing</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Delivery Partners</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Corporate Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Verification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Bangalore, India</li>
+                        <li class="mb-3"><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@bikeshare.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-light">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 BikeShare. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('#page-content > div').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show requested page
+            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize map for bikes page
+        function initMap() {
+            // Simple map initialization
+            const map = L.map('map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers
+            L.marker([12.9352, 77.6245]).addTo(map)
+                .bindPopup('Royal Enfield Classic 350')
+                .openPopup();
+                
+            L.marker([12.9117, 77.6446]).addTo(map)
+                .bindPopup('Honda Activa 6G');
+                
+            L.marker([12.9784, 77.6408]).addTo(map)
+                .bindPopup('TVS Apache RTR 160');
+                
+            L.marker([12.9250, 77.5176]).addTo(map)
+                .bindPopup('Bajaj Pulsar NS200');
+        }
+        
+        // Initialize map for tracking page
+        function initTrackingMap() {
+            const map = L.map('tracking-map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add route
+            const route = [
+                [12.9352, 77.6245], // Start: Koramangala
+                [12.9117, 77.6446]  // Current: HSR Layout
+            ];
+            
+            L.polyline(route, {color: '#2ecc71', weight: 5}).addTo(map);
+            
+            // Add markers
+            L.marker(route[0]).addTo(map)
+                .bindPopup('Pickup Location: Koramangala');
+                
+            L.marker(route[1]).addTo(map)
+                .bindPopup('Current Location: HSR Layout');
+        }
+        
+        // Simulate OTP sending
+        function sendOTP() {
+            document.getElementById('otp-section').style.display = 'block';
+            alert('OTP (123456) has been sent to your mobile number!');
+        }
+        
+        // Initialize maps when page loads
+        window.onload = function() {
+            initMap();
+            initTrackingMap();
+            showPage('home');
+        }
+    </script>
+
+</body>
+</html>

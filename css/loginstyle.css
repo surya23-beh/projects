@@ -99,7 +99,7 @@ form{ width: 100%; }
 .btn2 {
     width: 100%;
     height: 48px;
-    background: linear-gradient(#444343, #b8b8b8);
+    background: linear-gradient(blue);
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .1);
     border: none;
@@ -137,7 +137,7 @@ form{ width: 100%; }
         left: -250%;
         width: 300%;
         height: 100%;
-        background: linear-gradient(#444343, #b8b8b8);
+        background: linear-gradient(blue);
         /* border: 2px solid red; */
         border-radius: 150px;
         z-index: 2;

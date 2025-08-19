@@ -1,0 +1,225 @@
+ :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--dark));
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.5)), url('/Suryanc/Suryanc/Bike_Rental_platform/Assets/mainbike.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 600px;
+            color: white;
+        }
+        
+        .service-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 15px;
+            overflow: hidden;
+            border: none;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .testimonial-card {
+            border-radius: 15px;
+            border: none;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+        }
+        
+        .dashboard-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+        
+        .login-container {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('https://images.unsplash.com/photo-1533577116850-9cc66cad8a9b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        
+        .form-control {
+            border-radius: 50px;
+            padding: 12px 20px;
+            border: 2px solid #e1e5eb;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+        }
+        
+        .social-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            margin: 0 5px;
+            transition: transform 0.3s;
+        }
+        
+        .social-btn:hover {
+            transform: translateY(-5px);
+        }
+        
+        .map-container {
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tracking-container {
+            background: linear-gradient(135deg, var(--dark), #1a2530);
+            color: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+        
+        .tracking-path {
+            position: relative;
+            height: 4px;
+            background: rgba(255,255,255,0.2);
+            margin: 40px 0;
+        }
+        
+        .tracking-path:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 65%;
+            background: var(--secondary);
+        }
+        
+        .tracking-point {
+            position: absolute;
+            top: -13px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+            box-shadow: 0 0 0 8px rgba(46, 204, 113, 0.3);
+        }
+        
+        .bike-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+        
+        .bike-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .badge-custom {
+            padding: 8px 15px;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--dark), #1a2530);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .page-section {
+            padding: 100px 0;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+       

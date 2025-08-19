@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find-bikes</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/Suryanc/Suryanc/Bike_Rental_platform/css/index.css">
+    <style>
+        /* Custom styles for the login modal */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .login-modal .modal-content {
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+        .login-modal .modal-header {
+            border-bottom: 1px solid #eee;
+            padding: 1.5rem;
+        }
+        .login-modal .modal-body {
+            padding: 1.5rem;
+        }
+        .login-modal .modal-footer {
+            border-top: 1px solid #eee;
+            padding: 1rem 1.5rem;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 1.5rem 0;
+        }
+        .divider::before, .divider::after {
+            content: "";
+            flex: 1;
+            border-bottom: 1px solid #ddd;
+        }
+        .divider span {
+            padding: 0 1rem;
+            color: #777;
+            font-size: 0.9rem;
+        }
+        .social-login-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.6rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            background: white;
+            transition: all 0.3s;
+        }
+        .social-login-btn:hover {
+            background-color: #f8f9fa;
+        }
+        .social-login-btn img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                <span class="fw-bold">ishowbikes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="findbikes.html">Find Bikes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registerpage.html">Register/login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin-loginpage.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="register-page">
+        <section class="page-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-8 col-lg-6">
+                        <div class="login-container p-4 p-lg-5">
+                            <h2 class="text-center mb-4">Create an Account</h2>
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">First Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter first name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Enter last name">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Email Address</label>
+                                    <input type="email" class="form-control" placeholder="Enter your email">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Phone Number</label>
+                                    <input type="tel" class="form-control" placeholder="Enter your phone number">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control" placeholder="Create a password">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" placeholder="Confirm your password">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label class="form-label">I want to:</label>
+                                    <div class="d-flex gap-3">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="role" id="ownerRole" checked>
+                                            <label class="form-check-label" for="ownerRole">
+                                                Rent out my bike
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="role" id="renterRole">
+                                            <label class="form-check-label" for="renterRole">
+                                                Rent a bike
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                              
+                                
+                                <div class="form-check mb-4">
+                                    <input class="form-check-input" type="checkbox" id="terms">
+                                    <label class="form-check-label" for="terms">
+                                        I agree to the <a href="#" class="text-decoration-none">Terms & Conditions</a>
+                                    </label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary w-100 mb-4">Create Account</button>
+                                
+                                <p class="text-center mb-0">
+                                    Already have an account? 
+                                    <a href="#" class="text-decoration-none" data-bs-toggle="modal" data-bs-target="#loginModal">Login here</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </section>
+    </div>
+
+    <!-- Login Modal -->
+    <div class="modal fade login-modal" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Login to Your Account</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="loginEmail" class="form-label">Email Address</label>
+                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="loginPassword" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember me</label>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary"><a href="success_login_modal.html" class="">login</a></button>
+                        </div>
+                    </form>
+                    
+                    <div class="divider">
+                        <span>Or continue with</span>
+                    </div>
+                    
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <button class="social-login-btn w-100">
+                                <i class="fab fa-google text-danger"></i>
+                                <span>Google</span>
+                            </button>
+                        </div>
+                        <div class="col-6">
+                            <button class="social-login-btn w-100">
+                                <i class="fab fa-facebook text-primary"></i>
+                                <span>Facebook</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer justify-content-center">
+                    <p class="mb-0">Don't have an account? <a href="#" data-bs-dismiss="modal">Sign up</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>BikeShare</h4>
+                    <p>Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-btn bg-facebook me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn bg-twitter me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn bg-instagram me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn bg-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bikes</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Rental</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Sharing</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Delivery Partners</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Corporate Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Verification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Bangalore, India</li>
+                        <li class="mb-3"><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@bikeshare.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-light">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 BikeShare. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('#page-content > div').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show requested page
+            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize map for bikes page
+        function initMap() {
+            // Simple map initialization
+            const map = L.map('map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers
+            L.marker([12.9352, 77.6245]).addTo(map)
+                .bindPopup('Royal Enfield Classic 350')
+                .openPopup();
+                
+            L.marker([12.9117, 77.6446]).addTo(map)
+                .bindPopup('Honda Activa 6G');
+                
+            L.marker([12.9784, 77.6408]).addTo(map)
+                .bindPopup('TVS Apache RTR 160');
+                
+            L.marker([12.9250, 77.5176]).addTo(map)
+                .bindPopup('Bajaj Pulsar NS200');
+        }
+        
+        // Initialize map for tracking page
+        function initTrackingMap() {
+            const map = L.map('tracking-map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add route
+            const route = [
+                [12.9352, 77.6245], // Start: Koramangala
+                [12.9117, 77.6446]  // Current: HSR Layout
+            ];
+            
+            L.polyline(route, {color: '#2ecc71', weight: 5}).addTo(map);
+            
+            // Add markers
+            L.marker(route[0]).addTo(map)
+                .bindPopup('Pickup Location: Koramangala');
+                
+            L.marker(route[1]).addTo(map)
+                .bindPopup('Current Location: HSR Layout');
+        }
+        
+        // Simulate OTP sending
+        function sendOTP() {
+            document.getElementById('otp-section').style.display = 'block';
+            alert('OTP (123456) has been sent to your mobile number!');
+        }
+        
+        // Initialize maps when page loads
+        window.onload = function() {
+            initMap();
+            initTrackingMap();
+            showPage('home');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>find-bikes</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="/Suryanc/Suryanc/Bike_Rental_platform/css/index.css">
+</head>
+<body>
+
+     <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-motorcycle" aria-hidden="true"></i>
+                <span class="fw-bold">ishowbikes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="findbikes.html">Find Bikes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="registerpage.html">Register/login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="user-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="admin-loginpage.html">Admin</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+ <div id="dashboard-page">
+            <section class="page-section">
+                <div class="container">
+                    <div class="d-flex justify-content-between align-items-center mb-5">
+                        <h2 class="mb-0">User Dashboard</h2>
+                        <a href="addnewbikes.html">
+                        <button class="btn bg-primary text-white">
+                            <i class="fas fa-plus me-2"></i>Add New Bike
+                        </button>
+                        </a>
+                    </div>
+                    
+                    <div class="row mb-5">
+                        <div class="col-md-3">
+                            <div class="card text-white bg-primary mb-3">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">₹8,250</h1>
+                                    <p class="mb-0">Total Earnings</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-white bg-success mb-3">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">12</h1>
+                                    <p class="mb-0">Completed Rentals</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-white bg-warning mb-3">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">2</h1>
+                                    <p class="mb-0">Active Rentals</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card text-white bg-info mb-3">
+                                <div class="card-body text-center">
+                                    <h1 class="display-4">4.8</h1>
+                                    <p class="mb-0">Average Rating</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-7">
+                            <div class="card mb-4">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">My Bikes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="list-group">
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Royal Enfield Classic 350</h5>
+                                                <span class="badge bg-success">Active</span>
+                                            </div>
+                                            <p class="mb-1">Location: Koramangala, Bangalore</p>
+                                            <small>Earnings: ₹5,250 (8 rentals)</small>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">Honda Activa 6G</h5>
+                                                <span class="badge bg-warning">Pending Approval</span>
+                                            </div>
+                                            <p class="mb-1">Location: HSR Layout, Bangalore</p>
+                                            <small>Newly added - under verification</small>
+                                        </a>
+                                        <a href="#" class="list-group-item list-group-item-action">
+                                            <div class="d-flex w-100 justify-content-between">
+                                                <h5 class="mb-1">TVS Apache RTR 160</h5>
+                                                <span class="badge bg-secondary">Inactive</span>
+                                            </div>
+                                            <p class="mb-1">Location: Indiranagar, Bangalore</p>
+                                            <small>Earnings: ₹3,000 (5 rentals)</small>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header bg-info text-white">
+                                    <h5 class="mb-0">Rental History</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>Bike</th>
+                                                    <th>Renter</th>
+                                                    <th>Date</th>
+                                                    <th>Duration</th>
+                                                    <th>Earnings</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Royal Enfield</td>
+                                                    <td>Rahul Sharma</td>
+                                                    <td>12 Aug 2023</td>
+                                                    <td>4 hours</td>
+                                                    <td>₹600</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>TVS Apache</td>
+                                                    <td>Priya Patel</td>
+                                                    <td>10 Aug 2023</td>
+                                                    <td>6 hours</td>
+                                                    <td>₹720</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Royal Enfield</td>
+                                                    <td>Vikram Singh</td>
+                                                    <td>8 Aug 2023</td>
+                                                    <td>8 hours</td>
+                                                    <td>₹1,200</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-5">
+                            <div class="card mb-4">
+                                <div class="card-header bg-warning text-white">
+                                    <h5 class="mb-0">Active Rentals</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-4">
+                                        <div class="flex-shrink-0">
+                                            <img src="https://randomuser.me/api/portraits/men/41.jpg" class="rounded-circle" width="60" height="60" alt="User">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-0">Amit Verma</h5>
+                                            <p class="mb-1">Swiggy Delivery Partner</p>
+                                            <div class="d-flex gap-2">
+                                                <span class="badge bg-primary">Royal Enfield Classic 350</span>
+                                                <span class="badge bg-success">In Progress</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between mb-3">
+                                        <div>
+                                            <p class="mb-1 text-muted">Start Time</p>
+                                            <p class="mb-0 fw-bold">9:00 AM</p>
+                                        </div>
+                                        <div>
+                                            <p class="mb-1 text-muted">End Time</p>
+                                            <p class="mb-0 fw-bold">5:00 PM</p>
+                                        </div>
+                                        <div>
+                                            <p class="mb-1 text-muted">Earnings</p>
+                                            <p class="mb-0 fw-bold">₹800</p>
+                                        </div>
+                                    </div>
+                                    
+                                    <button class="btn btn-outline-primary w-100 mb-3" onclick="showPage('tracking')">
+                                        <i class="fas fa-map-marker-alt me-2"></i>Track Bike Location
+                                    </button>
+                                    
+                                    <div class="d-flex align-items-center mt-4 mb-4">
+                                        <div class="flex-shrink-0">
+                                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle" width="60" height="60" alt="User">
+                                        </div>
+                                        <div class="flex-grow-1 ms-3">
+                                            <h5 class="mb-0">Sanjay Mehta</h5>
+                                            <p class="mb-1">Personal Commute</p>
+                                            <div class="d-flex gap-2">
+                                                <span class="badge bg-info">TVS Apache RTR 160</span>
+                                                <span class="badge bg-success">In Progress</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <p class="mb-1 text-muted">Start Time</p>
+                                            <p class="mb-0 fw-bold">10:00 AM</p>
+                                        </div>
+                                        <div>
+                                            <p class="mb-1 text-muted">End Time</p>
+                                            <p class="mb-0 fw-bold">2:00 PM</p>
+                                        </div>
+                                        <div>
+                                            <p class="mb-1 text-muted">Earnings</p>
+                                            <p class="mb-0 fw-bold">₹400</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="card">
+                                <div class="card-header bg-success text-white">
+                                    <h5 class="mb-0">Rent Again</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                                        <div>
+                                            <h6 class="mb-0">Neha Gupta</h6>
+                                            <small>Zomato Delivery Partner</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary ms-auto">Rent Now</button>
+                                    </div>
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img src="https://randomuser.me/api/portraits/men/22.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                                        <div>
+                                            <h6 class="mb-0">Raj Malhotra</h6>
+                                            <small>Personal Commute</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary ms-auto">Rent Now</button>
+                                    </div>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://randomuser.me/api/portraits/men/65.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                                        <div>
+                                            <h6 class="mb-0">Vijay Kumar</h6>
+                                            <small>Rapido Partner</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-primary ms-auto">Rent Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+      
+        <!-- Live Tracking -->
+        <div id="tracking-page" class="hidden">
+            <section class="page-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <div class="card border-0 shadow">
+                                <div class="card-header bg-primary text-white">
+                                    <h3 class="mb-0"><i class="fas fa-map-marker-alt me-2"></i>Live Bike Tracking</h3>
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="tracking-container p-4">
+                                        <div class="row">
+                                            <div class="col-md-7">
+                                                <h4>Royal Enfield Classic 350</h4>
+                                                <p>Rented by: Amit Verma (Swiggy Delivery Partner)</p>
+                                                
+                                                <div class="d-flex justify-content-between mb-4">
+                                                    <div>
+                                                        <h5>Pickup Location</h5>
+                                                        <p>Koramangala 5th Block, Bangalore</p>
+                                                    </div>
+                                                    <div class="text-end">
+                                                        <h5>Current Location</h5>
+                                                        <p>HSR Layout, Bangalore</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="tracking-path">
+                                                    <div class="tracking-point" style="left: 0%;">
+                                                        <i class="fas fa-flag"></i>
+                                                    </div>
+                                                    <div class="tracking-point" style="left: 65%;">
+                                                        <i class="fas fa-bicycle"></i>
+                                                    </div>
+                                                    <div class="tracking-point" style="left: 100%;">
+                                                        <i class="fas fa-location-dot"></i>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="d-flex justify-content-between">
+                                                    <div>
+                                                        <p class="mb-0">Start: 9:00 AM</p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Current: 1:30 PM</p>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">End: 5:00 PM</p>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="mt-4">
+                                                    <h5>Bike Status</h5>
+                                                    <div class="d-flex gap-3 mb-3">
+                                                        <span class="badge bg-success">Engine: ON</span>
+                                                        <span class="badge bg-info">Moving</span>
+                                                        <span class="badge bg-primary">Speed: 42 km/h</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="col-md-5">
+                                                <div class="map-container" id="tracking-map"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <button class="btn btn-outline-primary" onclick="showPage('dashboard')">
+                                        <i class="fas fa-arrow-left me-2"></i>Back to Dashboard
+                                    </button>
+                                    <button class="btn btn-primary float-end">
+                                        <i class="fas fa-phone-alt me-2"></i>Call Renter
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+ <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>BikeShare</h4>
+                    <p>Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-btn bg-facebook me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn bg-twitter me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn bg-instagram me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn bg-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bikes</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Rental</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Sharing</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Delivery Partners</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Corporate Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Verification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Bangalore, India</li>
+                        <li class="mb-3"><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@bikeshare.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-light">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 BikeShare. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+      <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('#page-content > div').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show requested page
+            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize map for bikes page
+        function initMap() {
+            // Simple map initialization
+            const map = L.map('map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers
+            L.marker([12.9352, 77.6245]).addTo(map)
+                .bindPopup('Royal Enfield Classic 350')
+                .openPopup();
+                
+            L.marker([12.9117, 77.6446]).addTo(map)
+                .bindPopup('Honda Activa 6G');
+                
+            L.marker([12.9784, 77.6408]).addTo(map)
+                .bindPopup('TVS Apache RTR 160');
+                
+            L.marker([12.9250, 77.5176]).addTo(map)
+                .bindPopup('Bajaj Pulsar NS200');
+        }
+        
+        // Initialize map for tracking page
+        function initTrackingMap() {
+            const map = L.map('tracking-map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add route
+            const route = [
+                [12.9352, 77.6245], // Start: Koramangala
+                [12.9117, 77.6446]  // Current: HSR Layout
+            ];
+            
+            L.polyline(route, {color: '#2ecc71', weight: 5}).addTo(map);
+            
+            // Add markers
+            L.marker(route[0]).addTo(map)
+                .bindPopup('Pickup Location: Koramangala');
+                
+            L.marker(route[1]).addTo(map)
+                .bindPopup('Current Location: HSR Layout');
+        }
+        
+        // Simulate OTP sending
+        function sendOTP() {
+            document.getElementById('otp-section').style.display = 'block';
+            alert('OTP (123456) has been sent to your mobile number!');
+        }
+        
+        // Initialize maps when page loads
+        window.onload = function() {
+            initMap();
+            initTrackingMap();
+            showPage('home');
+        }
+    </script>
+
+</body>
+</html>
