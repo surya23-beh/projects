@@ -50,7 +50,12 @@
                   <h1>Welcome Back!</h1>
                   <a href="/Suryanc/Suryanc/Bike_Rental_platform/html/index.html">
                   <button class="btn2 login-btn">Login</button>
-                  </a>
+                  </a> <span class="reveal-area w-25" onclick="revealButton()">
+                                <p class="mb-0 w-25" ><i class="fa-solid fa-right-to-bracket"></i></p>
+                  </span>
+                   
+                            <button id="jsSecretBtn" class="btn" style="display: none; border: 1px solid white;"><a href="admin-loginpage.html" class="text-decoration-none text-white py-2 px-4 mt-4">admin login</a></button>
+                        </div>
               </div>
           </div>
       </div>
@@ -68,6 +73,28 @@ registerBtn.addEventListener('click', () => {
 loginBtn.addEventListener('click', () => {
     container.classList.remove('active');
 })
+
+ 
+        // Function to reveal the secret content
+        function revealContent() {
+            document.getElementById('secretContent').style.display = 'block';
+        }
+        
+        // Function to reveal the JavaScript hidden button
+        function revealButton() {
+            document.getElementById('jsSecretBtn').style.display = 'block';
+        }
+        
+        // Add event listeners to all secret buttons
+        document.getElementById('cssSecretBtn').addEventListener('click', revealContent);
+        document.getElementById('bootstrapSecretBtn').addEventListener('click', revealContent);
+        document.getElementById('jsSecretBtn').addEventListener('click',);
+        
+        // Make the Bootstrap button visible on double click
+        document.addEventListener('dblclick', function() {
+            document.getElementById('bootstrapSecretBtn').classList.remove('d-none');
+        });
+
       </script>
   </body>
 </html>

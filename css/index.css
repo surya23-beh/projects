@@ -17,9 +17,9 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         
-        .hero {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.5)), url('/Suryanc/Suryanc/Bike_Rental_platform/Assets/mainbike.jpg');
-            background-size: cover;
+        .aro {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.5)), url('/Suryanc/Suryanc/Bike_Rental_platform/Assets/1920x1080.jpg');
+            background-size: auto;
             background-position: center;
             height: 600px;
             color: white;

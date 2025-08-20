@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BikeShare - Rent & Share Bikes</title>
+    <title>ishowbikes - Rent & Share Bikes</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -26,7 +26,7 @@
                     <li class="nav-item"><a class="nav-link" href="findbikes.html">Find Bikes</a></li>
                     <li class="nav-item"><a class="nav-link" href="registerpage.html">Register/login</a></li>
                     <li class="nav-item"><a class="nav-link" href="user-dashboard.html">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="admin-loginpage.html" >Admin</a></li>
+                    
                 </ul>
             </div>
         </div>
@@ -36,26 +36,78 @@
     <div id="page-content">
         <!-- Home Page -->
         <div id="home-page">
-            <!-- Hero Section -->
-            <section class="hero d-flex align-items-center">
+          <div class="container-fluid aro ">
+            <div class="row">
+                <div class="col-6 mt-3">
+                            <div class="card mb-4 w-75 mx-4 mt-3">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Filter Bikes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" placeholder="Enter location">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Bike Type</label>
+                                        <select class="form-select">
+                                            <option selected>All Types</option>
+                                            <option>Scooter</option>
+                                            <option>Motorcycle</option>
+                                            <option>Electric Bike</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Price Range (per hour)</label>
+                                        <input type="range" class="form-range" min="20" max="200" step="10" value="80">
+                                        <div class="d-flex justify-content-between">
+                                            <span>₹20</span>
+                                            <span>₹80</span>
+                                            <span>₹200</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Mileage</label>
+                                        <select class="form-select">
+                                            <option selected>Any</option>
+                                            <option>40+ kmpl</option>
+                                            <option>50+ kmpl</option>
+                                            <option>60+ kmpl</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <button class="btn bg-primary text-white w-100">Apply Filters</button>
+                                </div>
+                            </div>
+            </div>
+
+              <div class="col-6 mt-5">
+                      <!-- Hero Section -->
+            <section class=" d-flex align-items-center">
                 <div class="container text-center">
-                    <h1 class="display-3 fw-bold mb-4">Share Your Bike, Earn While You Work</h1>
+                    <h1 class="display-3 fw-bold mb-4">Share Your Bike, <span class="text-primary"> While You Work</span> </h1>
                     <p class="lead mb-5">Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
                     <div class="d-flex justify-content-center gap-3">
-                        <button class="btn bg-primary btn-lg" onclick="showPage('register')">
-                            <i class="fas fa-bicycle me-2"></i>List Your Bike
+                        <button class="btn bg-primary btn-lg">
+                            <i class="fas fa-bicycle me-2"></i><a href="findbikes.html" class="text-decoration-none text-white">Find bikes</a>
                         </button>
-                        <button class="btn btn-light btn-lg" onclick="showPage('bikes')">
-                            <i class="fas fa-search me-2"></i>Find a Bike
+                        <button class="btn btn-light btn-lg">
+                            <a href="registerpage.html" class="text-decoration-none text-muted">Register</a>
                         </button>
                     </div>
                 </div>
             </section>
+                </div>
+          </div>
+          </div>
 
             <!-- Services Section -->
             <section class="page-section">
-                <div class="container">
-                    <h2 class="text-center section-title">How It Works</h2>
+                <div class="container-fluid p-4">
+                    <h2 class="text-center section-title">How It Works - for owners</h2>
                     <div class="row g-4">
                         <!-- Service 1 -->
                         <div class="col-md-4">
@@ -92,6 +144,47 @@
                                     </div>
                                     <h4 class="card-title mb-3">Earn Money</h4>
                                     <p class="card-text">Get paid securely while your bike is being used. Track earnings in your dashboard.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-center section-title mt-5">How It Works - for renters</h2>
+                    <div class="row g-4">
+                        <!-- Service 1 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-plus fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">select Your Bike</h4>
+                                    <p class="card-text">Select your bike according to your convinient,time and location</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 2 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-bell fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">Give request to the owners </h4>
+                                    <p class="card-text">Receive notifications when owner accepts your request.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 3 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-money-bill-wave fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">Enjoy the journey</h4>
+                                    <p class="card-text">Get the bike and use for your works, return it without any damage.</p>
                                 </div>
                             </div>
                         </div>
@@ -138,7 +231,7 @@
                                             <p class="text-muted mb-0">Zomato Delivery Partner</p>
                                         </div>
                                     </div>
-                                    <p class="card-text">"As a delivery partner, renting bikes through BikeShare has increased my earnings by 40%. No maintenance worries!"</p>
+                                    <p class="card-text">"As a delivery partner, renting bikes through ishowbikes has increased my earnings by 40%. No maintenance worries!"</p>
                                     <div class="text-warning">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -271,7 +364,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
-                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>BikeShare</h4>
+                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>ishowbikes</h4>
                     <p>Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
                     <div class="d-flex mt-4">
                         <a href="#" class="social-btn bg-facebook me-2"><i class="fab fa-facebook-f"></i></a>
@@ -308,7 +401,7 @@
                     <ul class="list-unstyled">
                         <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Bangalore, India</li>
                         <li class="mb-3"><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</li>
-                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@bikeshare.com</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@ishowbikes.com</li>
                     </ul>
                 </div>
             </div>
@@ -317,7 +410,7 @@
             
             <div class="row">
                 <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2023 BikeShare. All rights reserved.</p>
+                    <p class="mb-0">&copy; 2023 ishowbikes. All rights reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <p class="mb-0">
