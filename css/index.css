@@ -18,7 +18,7 @@
         }
         
         .aro {
-            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.5)), url('/Suryanc/Suryanc/Bike_Rental_platform/Assets/1920x1080.jpg');
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.5)), url('../Assets/1920x1080.jpg');
             background-size: auto;
             background-position: center;
             height: 600px;
