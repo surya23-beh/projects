@@ -14,18 +14,18 @@
      <nav class="navbar navbar-expand-lg sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="#">
-                <i class="fa fa-motorcycle" aria-hidden="true"></i>
-                <span class="fw-bold">ishowbikes</span>
+                <i class="fa fa-motorcycle text-white" aria-hidden="true"></i>
+                <span class="fw-bold text-white">ishowbikes</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="../index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="findbikes.html">Find Bikes</a></li>
-                    <li class="nav-item"><a class="nav-link" href="registerpage.html">Register/login</a></li>
-                    <li class="nav-item"><a class="nav-link" href="user-dashboard.html">Dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="findbikes.html">Find Bikes</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="registerpage.html">Register/login</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="user-dashboard.html">Dashboard</a></li>
                     
                 </ul>
             </div>
@@ -114,7 +114,7 @@
                                             <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>1.2 km away - Koramangala</p>
                                             <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <h4 class="mb-0">₹100/hr</h4>
-                                                <button class="btn bg-primary text-whitw" onclick="showPage('confirmation')">Rent Now</button>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -136,7 +136,7 @@
                                             <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>0.8 km away - HSR Layout</p>
                                             <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <h4 class="mb-0">₹70/hr</h4>
-                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation')">Rent Now</button>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -158,7 +158,7 @@
                                             <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>2.1 km away - Indiranagar</p>
                                             <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <h4 class="mb-0">₹90/hr</h4>
-                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation')">Rent Now</button>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +180,7 @@
                                             <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>1.5 km away - Jayanagar</p>
                                             <div class="d-flex justify-content-between align-items-center mt-3">
                                                 <h4 class="mb-0">₹95/hr</h4>
-                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation')">Rent Now</button>
+                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
                                             </div>
                                         </div>
                                     </div>
@@ -219,7 +219,7 @@
                                     
                                     <div class="row mb-4">
                                         <div class="col-md-4 text-center">
-                                            <img src="Assets/re.avif" class="img-fluid rounded" alt="Bike">
+                                            <img src="/Assets/2022-TVS-Apache-RTR-160-Specs.jpg" class="img-fluid rounded" alt="Bike">
                                         </div>
                                         <div class="col-md-8">
                                             <h3>Royal Enfield Classic 350</h3>
@@ -364,10 +364,15 @@
             });
             
             // Show requested page
-            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            document.getElementById(`${pageId}`).classList.remove('hidden');
             
             // Scroll to top
-            window.scrollTo(0, 0);
+            window.scrollTo(
+               {
+                 top : 1500,
+                behaviur : 'instant'
+               }
+            );
         }
         
         // Initialize map for bikes page

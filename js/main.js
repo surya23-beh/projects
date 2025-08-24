@@ -100,7 +100,7 @@ function updateAuthState() {
 function logout() {
     localStorage.removeItem('currentUser');
     updateAuthState();
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
 }
 
 // Make functions available globally

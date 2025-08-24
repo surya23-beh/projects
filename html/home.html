@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ishowbikes - Rent & Share Bikes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-motorcycle text-white" aria-hidden="true"></i>
+                <span class="fw-bold text-white">ishowbikes</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active text-white" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="findbikes.html">Find Bikes</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="registerpage.html">Register/login</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="user-dashboard.html">Dashboard</a></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content - Dynamic Pages -->
+    <div id="page-content">
+        <!-- Home Page -->
+        <div id="home-page">
+          <div class="container-fluid aro ">
+            <div class="row">
+                <div class="col-6 mt-3">
+                            <div class="card mb-4 w-75 mx-4 mt-3">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">Filter Bikes</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="mb-3">
+                                        <label class="form-label">Location</label>
+                                        <input type="text" class="form-control" placeholder="Enter location">
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Bike Type</label>
+                                        <select class="form-select">
+                                            <option selected>All Types</option>
+                                            <option>Scooter</option>
+                                            <option>Motorcycle</option>
+                                            <option>Electric Bike</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Price Range (per hour)</label>
+                                        <input type="range" class="form-range" min="20" max="200" step="10" value="80">
+                                        <div class="d-flex justify-content-between">
+                                            <span>₹20</span>
+                                            <span>₹80</span>
+                                            <span>₹200</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label class="form-label">Mileage</label>
+                                        <select class="form-select">
+                                            <option selected>Any</option>
+                                            <option>40+ kmpl</option>
+                                            <option>50+ kmpl</option>
+                                            <option>60+ kmpl</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <button class="btn bg-primary text-white w-100">Apply Filters</button>
+                                </div>
+                            </div>
+            </div>
+
+              <div class="col-6 mt-5">
+                      <!-- Hero Section -->
+            <section class=" d-flex align-items-center">
+                <div class="container text-center">
+                    <h1 class="display-3 fw-bold mb-4">Share Your Bike, <span class="text-primary"> While You Work</span> </h1>
+                    <p class="lead mb-5">Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn bg-primary btn-lg">
+                            <i class="fas fa-bicycle me-2"></i><a href="findbikes.html" class="text-decoration-none text-white">Find bikes</a>
+                        </button>
+                        <button class="btn btn-light btn-lg">
+                            <a href="registerpage.html" class="text-decoration-none text-muted">Register</a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+                </div>
+          </div>
+          </div>
+
+            <!-- Services Section -->
+            <section class="page-section">
+                <div class="container-fluid p-4">
+                    <h2 class="text-center section-title">How It Works - for owners</h2>
+                    <div class="row g-4">
+                        <!-- Service 1 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-plus fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">List Your Bike</h4>
+                                    <p class="card-text">Easily add your bike details, set your availability hours, and specify your location.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 2 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-bell fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">Get Rental Requests</h4>
+                                    <p class="card-text">Receive notifications when someone wants to rent your bike during your available hours.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 3 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-money-bill-wave fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">Earn Money</h4>
+                                    <p class="card-text">Get paid securely while your bike is being used. Track earnings in your dashboard.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="text-center section-title mt-5">How It Works - for renters</h2>
+                    <div class="row g-4">
+                        <!-- Service 1 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-plus fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">select Your Bike</h4>
+                                    <p class="card-text">Select your bike according to your convinient,time and location</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 2 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-bell fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">Give request to the owners </h4>
+                                    <p class="card-text">Receive notifications when owner accepts your request.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Service 3 -->
+                        <div class="col-md-4">
+                            <div class="service-card card h-100">
+                                <div class="card-body p-4 text-center">
+                                    <div class="icon-circle bg-primary text-white mb-4 mx-auto">
+                                        <i class="fas fa-money-bill-wave fa-2x"></i>
+                                    </div>
+                                    <h4 class="card-title mb-3">Enjoy the journey</h4>
+                                    <p class="card-text">Get the bike and use for your works, return it without any damage.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials -->
+            <section class="page-section bg-light">
+                <div class="container">
+                    <h2 class="text-center section-title">Success Stories</h2>
+                    <div class="row g-4">
+                        <!-- Testimonial 1 -->
+                        <div class="col-md-6">
+                            <div class="testimonial-card card h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img src="https://randomuser.me/api/portraits/men/32.jpg" class="rounded-circle me-3" width="60" height="60" alt="User">
+                                        <div>
+                                            <h5 class="mb-0">Rajesh Kumar</h5>
+                                            <p class="text-muted mb-0">Software Engineer</p>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">"I've been earning ₹500-800 daily by renting my bike during office hours. It covers my fuel costs and more!"</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="col-md-6"> 
+                            <div class="testimonial-card card h-100">
+                                <div class="card-body p-4">
+                                    <div class="d-flex align-items-center mb-3">
+                                        <img src="https://randomuser.me/api/portraits/women/44.jpg" class="rounded-circle me-3" width="60" height="60" alt="User">
+                                        <div>
+                                            <h5 class="mb-0">Priya Sharma</h5>
+                                            <p class="text-muted mb-0">Zomato Delivery Partner</p>
+                                        </div>
+                                    </div>
+                                    <p class="card-text">"As a delivery partner, renting bikes through ishowbikes has increased my earnings by 40%. No maintenance worries!"</p>
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Preview -->
+            <section class="page-section">
+                <div class="container">
+                    <h2 class="text-center section-title">Powerful Dashboard</h2>
+                    <div class="row g-4"> 
+                        <div class="col-md-6">
+                            <div class="dashboard-card card">
+                                <div class="card-header bg-primary text-white">
+                                    <h5 class="mb-0">User Dashboard</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            My Listed Bikes
+                                            <span class="badge bg-primary rounded-pill">3</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Active Rentals
+                                            <span class="badge bg-success rounded-pill">2</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Pending Requests
+                                            <span class="badge bg-warning rounded-pill">1</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Total Earnings
+                                            <span class="badge bg-info rounded-pill">₹12,850</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                          <div class="col-md -6">
+                            <div class="dashboard-card card">
+                                <div class="card-header bg-dark text-white">
+                                    <h5 class="mb-0">Admin Dashboard</h5>
+                                </div>
+                                <div class="card-body">
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Total Users
+                                            <span class="badge bg-dark rounded-pill">1,250</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Active Rentals
+                                            <span class="badge bg-success rounded-pill">324</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Today's Revenue
+                                            <span class="badge bg-info rounded-pill">₹78,920</span>
+                                        </li>
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Support Tickets
+                                            <span class="badge bg-danger rounded-pill">12</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>   
+        </div>
+
+        <!-- Login Page -->
+        <div id="login-page" class="hidden">
+            <section class="page-section">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8 col-lg-6">
+                            <div class="login-container p-4 p-lg-5">
+                                <h2 class="text-center mb-4">Login to Your Account</h2>
+                                <form>
+                                    <div class="mb-3">
+                                        <label class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" placeholder="Enter your email">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label">Password</label>
+                                        <input type="password" class="form-control" placeholder="Enter your password">
+                                    </div>
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="remember">
+                                        <label class="form-check-label" for="remember">Remember me</label>
+                                        <a href="#" class="float-end text-decoration-none">Forgot Password?</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary w-100 mb-4">Login</button>
+                                    
+                                    <div class="text-center mb-4 position-relative">
+                                        <hr>
+                                          <span class="bg-white px-3 position-absolute top-50 start-50 translate-middle">Or continue with</span>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-center mb-4">
+                                        <a href="#" class="social-btn bg-danger"><i class="fab fa-google"></i></a>
+                                        <a href="#" class="social-btn bg-primary"><i class="fab fa-facebook-f"></i></a>
+                                        <a href="#" class="social-btn bg-info"><i class="fab fa-twitter"></i></a>
+                                        <a href="#" class="social-btn bg-gradient-instagram"><i class="fab fa-instagram"></i></a>
+                                    </div>
+                                    
+                                    <p class="text-center mb-0">
+                                        Don't have an account? 
+                                        <a href="#" class="text-decoration-none" onclick="showPage('register')">Register now</a>
+                                    </p>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    <!-- Footer -->
+    <footer class="mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>ishowbikes</h4>
+                    <p>Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="social-btn bg-facebook me-2"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-btn bg-twitter me-2"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-btn bg-instagram me-2"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn bg-linkedin"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-md-2 mb-4">
+                    <h5 class="mb-4">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Home</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Services</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bikes</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Services</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Rental</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Sharing</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Delivery Partners</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Corporate Solutions</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-white-50">Bike Verification</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-md-3 mb-4">
+                    <h5 class="mb-4">Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li class="mb-3"><i class="fas fa-map-marker-alt me-2"></i> Bangalore, India</li>
+                        <li class="mb-3"><i class="fas fa-phone-alt me-2"></i> +91 98765 43210</li>
+                        <li class="mb-3"><i class="fas fa-envelope me-2"></i> info@ishowbikes.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <hr class="my-4 bg-light">
+            
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2023 ishowbikes. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <p class="mb-0">
+                        <a href="#" class="text-white-50 text-decoration-none me-3">Privacy Policy</a>
+                        <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        // Page navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('#page-content > div').forEach(page => {
+                page.classList.add('hidden');
+            });
+            
+            // Show requested page
+            document.getElementById(`${pageId}-page`).classList.remove('hidden');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Initialize map for bikes page
+        function initMap() {
+            // Simple map initialization
+            const map = L.map('map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add markers
+            L.marker([12.9352, 77.6245]).addTo(map)
+                .bindPopup('Royal Enfield Classic 350')
+                .openPopup();
+                
+            L.marker([12.9117, 77.6446]).addTo(map)
+                .bindPopup('Honda Activa 6G');
+                
+            L.marker([12.9784, 77.6408]).addTo(map)
+                .bindPopup('TVS Apache RTR 160');
+                
+            L.marker([12.9250, 77.5176]).addTo(map)
+                .bindPopup('Bajaj Pulsar NS200');
+        }
+        
+        // Initialize map for tracking page
+        function initTrackingMap() {
+            const map = L.map('tracking-map').setView([12.9716, 77.5946], 12);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Add route
+            const route = [
+                [12.9352, 77.6245], // Start: Koramangala
+                [12.9117, 77.6446]  // Current: HSR Layout
+            ];
+            
+            L.polyline(route, {color: '#2ecc71', weight: 5}).addTo(map);
+            
+            // Add markers
+            L.marker(route[0]).addTo(map)
+                .bindPopup('Pickup Location: Koramangala');
+                
+            L.marker(route[1]).addTo(map)
+                .bindPopup('Current Location: HSR Layout');
+        }
+        
+        // Simulate OTP sending
+        function sendOTP() {
+            document.getElementById('otp-section').style.display = 'block';
+            alert('OTP (123456) has been sent to your mobile number!');
+        }
+        
+        // Initialize maps when page loads
+        window.onload = function() {
+            initMap();
+            initTrackingMap();
+            showPage('home');
+        }
+    </script>
+</body>
+</html>
