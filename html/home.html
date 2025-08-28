@@ -8,6 +8,33 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="../css/index.css">
+    <style>
+        @media screen and (max-width:400px){
+            .media-share-align{
+               
+                padding-top: 130px;
+                padding-bottom: 150px;
+            }
+            .aro{
+                height:720px;
+            }
+            .media-works-align{
+                margin-top: 500px;
+            }
+            .media-filter-align{
+               
+                padding-top: 40px;
+                
+            }
+            .media-filter-align2{
+                
+                width: 340px;
+            }
+            .media-dashboard-align{
+                margin-bottom: 50px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation Bar -->
@@ -36,10 +63,29 @@
     <div id="page-content">
         <!-- Home Page -->
         <div id="home-page">
-          <div class="container-fluid aro ">
+          <div class="container-fluid aro">
             <div class="row">
-                <div class="col-6 mt-3">
-                            <div class="card mb-4 w-75 mx-4 mt-3">
+
+                  <div class="col-xl-6 mt-5 col-12 mb-5 d-flex justify-content-center align-items-center media-share-align">
+                      <!-- Hero Section -->
+            <section class=" d-flex align-items-center">
+                <div class="container text-center">
+                    <h1 class="display-3 fw-bold mb-4">Share Your Bike, <span class="text-primary"> While You Work</span> </h1>
+                    <p class="lead mb-5">Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <button class="btn bg-primary btn-lg">
+                            <i class="fas fa-bicycle me-2"></i><a href="findbikes.html" class="text-decoration-none text-white">Find bikes</a>
+                        </button>
+                        <button class="btn btn-light btn-lg">
+                            <a href="registerpage.html" class="text-decoration-none text-muted">Register</a>
+                        </button>
+                    </div>
+                </div>
+            </section>
+                </div>
+          
+                <div class="col-xl-6 mt-3 col-12 mt-5 media-filter-align">
+                            <div class="card mb-4  mx-3 mt-3 media-filter-align2">
                                 <div class="card-header bg-primary text-white">
                                     <h5 class="mb-0">Filter Bikes</h5>
                                 </div>
@@ -82,31 +128,17 @@
                                     <button class="btn bg-primary text-white w-100">Apply Filters</button>
                                 </div>
                             </div>
+
+                            
             </div>
 
-              <div class="col-6 mt-5">
-                      <!-- Hero Section -->
-            <section class=" d-flex align-items-center">
-                <div class="container text-center">
-                    <h1 class="display-3 fw-bold mb-4">Share Your Bike, <span class="text-primary"> While You Work</span> </h1>
-                    <p class="lead mb-5">Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
-                    <div class="d-flex justify-content-center gap-3">
-                        <button class="btn bg-primary btn-lg">
-                            <i class="fas fa-bicycle me-2"></i><a href="findbikes.html" class="text-decoration-none text-white">Find bikes</a>
-                        </button>
-                        <button class="btn btn-light btn-lg">
-                            <a href="registerpage.html" class="text-decoration-none text-muted">Register</a>
-                        </button>
-                    </div>
-                </div>
-            </section>
-                </div>
+            
           </div>
           </div>
 
             <!-- Services Section -->
             <section class="page-section">
-                <div class="container-fluid p-4">
+                <div class="container-fluid p-4 media-works-align">
                     <h2 class="text-center section-title">How It Works - for owners</h2>
                     <div class="row g-4">
                         <!-- Service 1 -->
@@ -247,7 +279,7 @@
             </section>
 
             <!-- Dashboard Preview -->
-            <section class="page-section">
+            <section class="page-section media-dasboard-align">
                 <div class="container">
                     <h2 class="text-center section-title">Powerful Dashboard</h2>
                     <div class="row g-4"> 
