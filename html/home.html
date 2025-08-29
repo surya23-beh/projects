@@ -9,11 +9,53 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="../css/index.css">
     <style>
-        @media screen and (max-width:400px){
+
+            
+
+        
+        @media screen and (min-width:902px) and (max-width:1198px){
+           .media-share-align{
+            padding-top: 130px;
+            padding-bottom: 150px;
+           }
+           .aro{
+            height: 760px;
+           }
+           .media-filter-align{
+            padding-top: 90px;
+           }
+          .media-works-align{
+            margin-top: 500px;
+          }
+        }
+
+        @media screen and (min-width:482px) and (max-width:900px){
+            .media-works-align{
+                margin-top: 500px;
+            }
+           .aro{
+            height: 760px;
+           }
+              .media-share-align{
+               
+                padding-top: 130px;
+                padding-bottom: 150px;
+               
+            
+            }
+
+            .media-filter-align{
+                padding-top: 100px;
+            }
+        }
+      
+        @media screen and (max-width:480px){
             .media-share-align{
                
                 padding-top: 130px;
                 padding-bottom: 150px;
+               
+            
             }
             .aro{
                 height:720px;
@@ -34,6 +76,7 @@
                 margin-bottom: 50px;
             }
         }
+      
     </style>
 </head>
 <body>
@@ -72,7 +115,7 @@
                 <div class="container text-center">
                     <h1 class="display-3 fw-bold mb-4">Share Your Bike, <span class="text-primary"> While You Work</span> </h1>
                     <p class="lead mb-5">Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
-                    <div class="d-flex justify-content-center gap-3">
+                    <div class="d-flex justify-content-center gap-4">
                         <button class="btn bg-primary btn-lg">
                             <i class="fas fa-bicycle me-2"></i><a href="findbikes.html" class="text-decoration-none text-white">Find bikes</a>
                         </button>
@@ -84,7 +127,7 @@
             </section>
                 </div>
           
-                <div class="col-xl-6 mt-3 col-12 mt-5 media-filter-align">
+                <div class="col-xl-6 col-12 mt-3 media-filter-align">
                             <div class="card mb-4  mx-3 mt-3 media-filter-align2">
                                 <div class="card-header bg-primary text-white">
                                     <h5 class="mb-0">Filter Bikes</h5>
