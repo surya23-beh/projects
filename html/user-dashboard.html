@@ -51,7 +51,7 @@
             overflow-x: hidden;
         }
         
-        .nav-pills .nav-link {
+        .nav-pills .nav-links {
             border-radius: 0;
             padding: 12px 20px;
             color: #495057;
@@ -60,21 +60,23 @@
             transition: all 0.2s;
         }
         
-        .nav-pills .nav-link i {
+        .nav-pills .nav-links i {
             margin-right: 10px;
             width: 20px;
             text-align: center;
         }
-        
-        .nav-pills .nav-link.active {
+         
+     
+
+        .nav-links:focus{
             background-color: var(--primary-color);
-            color: white;
+             color: white;
             border-left: 4px solid #0a58ca;
-        }
+        } 
         
-        .nav-pills .nav-link:hover:not(.active) {
+        /* .nav-pills .nav-link:hover:not(.active) {
             background-color: #f8f9fa;
-        }
+        } */
         
         .user-info {
             padding: 20px;
@@ -170,6 +172,14 @@
             .overlay.active {
                 display: block;
             }
+              .media-footer-align{
+                margin-left:0px;
+               
+            }
+
+        }
+        @media screen and (max-width:480px){
+          
         }
          
         
@@ -185,7 +195,8 @@
             position: fixed;
             bottom: 20px;
             right: 20px;
-            z-index: 1100;
+            left: 0;
+            /* z-index: 1100; */
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -229,14 +240,18 @@
         .table-responsive {
             overflow-x: auto;
         }
-
-      
+        footer{
+            margin-left: 280px;
+        }
+        .nav-item > .nav-links{
+            text-decoration: none;
+            font-size: 17px;
+        }
            
     </style>
 </head>
 <body>
-
-      <nav class="navbar navbar-expand-lg sticky-top bg-primary">
+  <nav class="navbar navbar-expand-xl sticky-top bg-primary">
         <div class="container">
             <a class="navbar-brand" href="#">
                 <i class="fa fa-motorcycle text-white" aria-hidden="true"></i>
@@ -247,7 +262,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active text-white" href="home.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active text-white " href="home.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="findbikes.html">Find Bikes</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="registerpage.html">Register/login</a></li>
                     <li class="nav-item"><a class="nav-link text-white" href="user-dashboard.html">Dashboard</a></li>
@@ -276,27 +291,27 @@
                 
                 <ul class="nav nav-pills flex-column mb-auto">
                     <li class="nav-item">
-                        <a href="#" class="nav-link active" data-section="dashboard">
+                        <a href="#" class="nav-links active" id="dashboard">
                             <i class="fas fa-tachometer-alt"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-section="account">
+                        <a href="#" class="nav-links" id="account">
                             <i class="fas fa-user"></i> Account Details
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-section="bikes">
+                        <a href="#" class="nav-links" id="bikes">
                             <i class="fas fa-motorcycle"></i> My Bikes
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-section="rentals">
+                        <a href="#" class="nav-links" id="rentals">
                             <i class="fas fa-history"></i> Rental History
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link" data-section="active-rentals">
+                        <a href="#" class="nav-links" id="active-rentals">
                             <i class="fas fa-bicycle"></i> Active Rentals
                         </a>
                     </li>
@@ -636,7 +651,7 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <footer class="mt-5" style="margin-left: 280px;">
+    <footer class="mt-5 media-footer-align">
         <div class="container">
             <div class="row">
                 <div class="col-md-4 mb-4">
@@ -702,33 +717,58 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script>
         // Navigation functionality
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                // Remove active class from all links
-                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                
-                // Add active class to clicked link
-                this.classList.add('active');
-                
-                // Hide all sections
-                document.querySelectorAll('.section').forEach(section => {
-                    section.classList.remove('active');
-                });
-                
-                // Show the selected section
-                const sectionId = this.getAttribute('data-section') + '-section';
-                document.getElementById(sectionId).classList.add('active');
-                
-                // On mobile, hide sidebar after selection
-                if (window.innerWidth < 768) {
-                    document.querySelector('.profile-sidebar').classList.remove('active');
-                    document.getElementById('sidebarOverlay').classList.remove('active');
-                }
-            });
-        });
-        
+        const dash = document.getElementById("dashboard");
+        const acc = document.getElementById("account");
+        const mybike = document.getElementById("bikes");
+        const rentalhist = document.getElementById("rentals");
+        const activerent = document.getElementById("active-rentals");
+        const showdashboard = document.getElementById("dashboard-section");
+        const showactive = document.getElementById("account-section");
+        const showbikes = document.getElementById("bikes-section");
+        const showrental = document.getElementById("rentals-section");
+        const showactiverental = document.getElementById("active-rentals-section");
+
+        acc.addEventListener("click", ()=>{
+            showdashboard.style.display="none";
+            showactive.style.display="block";
+            showbikes.style.display="none";
+            showrental.style.display="none";
+            showactiverental.style.display="none";
+        })
+
+        dash.addEventListener("click", ()=>{
+            showdashboard.style.display="block";
+            showactive.style.display="none";
+            showbikes.style.display="none";
+            showrental.style.display="none";
+            showactiverental.style.display="none";
+
+        })
+
+        mybike.addEventListener("click", ()=>{
+             showdashboard.style.display="none";
+            showactive.style.display="none";
+            showbikes.style.display="block";
+            showrental.style.display="none";
+            showactiverental.style.display="none";
+        })
+
+        rentalhist.addEventListener("click", ()=>{
+             showdashboard.style.display="none";
+            showactive.style.display="none";
+            showbikes.style.display="none";
+            showrental.style.display="block";
+            showactiverental.style.display="none";
+        })
+
+           activerent.addEventListener("click", ()=>{
+             showdashboard.style.display="none";
+            showactive.style.display="none";
+            showbikes.style.display="none";
+            showrental.style.display="none";
+            showactiverental.style.display="block";
+        })
+
         // Show tracking section
         function showTracking() {
             document.querySelectorAll('.section').forEach(section => {
