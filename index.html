@@ -261,15 +261,15 @@ form{ width: 100%; }
               <form action="#">
                   <h1>Login</h1>
                   <div class="input-box">
-                      <input type="text" placeholder="name" required>
+                      <input type="text" placeholder="name" id="nme">
                       <i class='bx bxs-user'></i>
                   </div>
                   <div class="input-box">
-                      <input type="tel" placeholder="phone" required>
+                      <input type="tel" placeholder="phone"  id="pnumber">
                       <i class="fa-solid fa-mobile-screen-button"></i>
                   </div>
 
-                  <button class="btn2 register-btn">get otp</button>
+                  <button class="btn2 register-btn" id="getotp">get otp</button>
               </form>
           </div>
 
@@ -277,10 +277,11 @@ form{ width: 100%; }
               <form action="#">
                   <h1>Verification</h1>
                   <div class="input-box">
-                      <input type="tel" placeholder="" required>
+                      <input type="tel" placeholder="enter otp" required>
                       <i class='bx bxs-user'></i>
                   </div>
                   <button type="submit" class="btn2">verify otp</button>
+                  <p id="res"></p>
               </form>
           </div>
 
@@ -293,9 +294,6 @@ form{ width: 100%; }
                   <h1>Welcome Back!</h1>
                   <a href="html/home.html">
                   <button class="btn2 login-btn">Login</button>
-                  <!-- </a> <span class="reveal-area w-25" onclick="revealButton()">
-                                <p class="mb-0 w-25" ><i class="fa-solid fa-right-to-bracket"></i></p>
-                  </span> -->
                    
                             <button id="jsSecretBtn" class="btn" style="display: none; border: 1px solid white;"><a href="html/admin-loginpage.html" class="text-decoration-none text-white py-2 px-4 mt-4">admin login</a></button>
                         </div>
@@ -306,37 +304,35 @@ form{ width: 100%; }
 
       <script>
         const container = document.querySelector('.container');
-const registerBtn = document.querySelector('.register-btn');
+const registerBtn = document.querySelector('#getotp');
+const namee = document.getElementById("nme");
+const cell = document.getElementById("pnumber");
+const loginBtn = document.querySelector(".login-btn");
+const result = document.getElementById("res");
+
 
 
 registerBtn.addEventListener('click', () => {
+    
+  console.log("jkjk");
+  if (namee.value == "")
+  {
+    alert("ENTER YOUR NAME");
+  }
+  else if (cell.value == ""){
+    alert("ENTER YOUR MOBILE NUMBER");
+  }
+  else{
     container.classList.add('active');
+  }
+    
+
 })
 
-loginBtn.addEventListener('click', () => {
-    container.classList.remove('active');
-})
 
- 
-        // Function to reveal the secret content
-        function revealContent() {
-            document.getElementById('secretContent').style.display = 'block';
-        }
-        
-        // Function to reveal the JavaScript hidden button
-        function revealButton() {
-            document.getElementById('jsSecretBtn').style.display = 'block';
-        }
-        
-        // Add event listeners to all secret buttons
-        document.getElementById('cssSecretBtn').addEventListener('click', revealContent);
-        document.getElementById('bootstrapSecretBtn').addEventListener('click', revealContent);
-        document.getElementById('jsSecretBtn').addEventListener('click',);
-        
-        // Make the Bootstrap button visible on double click
-        document.addEventListener('dblclick', function() {
-            document.getElementById('bootstrapSecretBtn').classList.remove('d-none');
-        });
+
+
+
 
       </script>
   </body>

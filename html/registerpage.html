@@ -130,25 +130,6 @@
                                     <input type="password" class="form-control" placeholder="Confirm your password">
                                 </div>
                                 
-                                <div class="mb-3">
-                                    <label class="form-label">I want to:</label>
-                                    <div class="d-flex gap-3">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="role" id="ownerRole" checked>
-                                            <label class="form-check-label" for="ownerRole">
-                                                Rent out my bike
-                                            </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="role" id="renterRole">
-                                            <label class="form-check-label" for="renterRole">
-                                                Rent a bike
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                              
-                                
                                 <div class="form-check mb-4">
                                     <input class="form-check-input" type="checkbox" id="terms">
                                     <label class="form-check-label" for="terms">
@@ -182,18 +163,18 @@
                     <form>
                         <div class="mb-3">
                             <label for="loginEmail" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="loginEmail" placeholder="Enter your email">
+                            <input type="email" class="form-control admemail" id="loginEmail" placeholder="Enter your email">
                         </div>
                         <div class="mb-3">
                             <label for="loginPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="loginPassword" placeholder="Enter your password">
+                            <input type="password" class="form-control admpass" id="loginPassword" placeholder="Enter your password">
                         </div>
                         <div class="mb-3 form-check">
                             <input type="checkbox" class="form-check-input" id="rememberMe">
                             <label class="form-check-label" for="rememberMe">Remember me</label>
                         </div>
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary"><a href="success_login_modal.html" class="text-decoration-none text-white">login</a></button>
+                            <button type="submit" class="btn btn-primary log"> login</button>
                         </div>
                     </form>
                     
@@ -225,6 +206,7 @@
 
     <footer class="mt-5">
         <div class="container">
+            <div class="row">
             <div class="col-md-4 mb-4">
                     <h4 class="mb-4"><i class="fas fa-bicycle me-2"></i>ishowbikes</h4>
                     <p class="text-white-50">Turn your idle bike into passive income. Rent it to delivery professionals and commuters during your office hours.</p>
@@ -280,6 +262,7 @@
                         <a href="#" class="text-white-50 text-decoration-none">Terms of Service</a>
                     </p>
                 </div>
+            </div>
             </div>
         </div>
     </footer>
@@ -361,6 +344,29 @@
             initTrackingMap();
             showPage('home');
         }
+        // login to admin panel
+        const logbtn = document.querySelector(".log");
+        const adminemail = document.querySelector(".admemail");
+        const adminpass = document.querySelector(".admpass");
+        logbtn.addEventListener("click",(e)=>{
+            console.log("hjhj");
+            e.preventDefault();
+         
+            if (adminemail.value == "ncsurya2005@gmail.com" && adminpass.value == 23) {
+                window.location.href = "admin-dashboard.html";
+            }
+            else if (adminemail.value == ""){
+                alert("ENTER THE EMAIL");
+                adminemail.focus();
+            }
+            else if (adminpass.value == ""){
+                alert("ENTER THE PASSWROD");
+                adminpass.focus();
+            }
+            else {
+                window.location.href = "user-dashboard.html";
+            }
+        })
     </script>
 </body>
 </html>

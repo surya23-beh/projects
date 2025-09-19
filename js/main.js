@@ -106,3 +106,6 @@ function logout() {
 // Make functions available globally
 window.updateAuthState = updateAuthState;
 window.logout = logout;
+
+// submitlisting,addbikes on bikes page
+

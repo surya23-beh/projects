@@ -106,7 +106,7 @@
                                 </div>
                             </div>
                             
-                            <div class="row">
+                            <div class="row" id="addbike-body">
                                 <!-- Bike 1 -->
                                 <div class="col-md-6 mb-4">
                                     <div class="bike-card card h-100">
@@ -115,7 +115,7 @@
                                             <span class="badge bg-success position-absolute top-0 end-0 m-2">Available now</span>
                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title">Royal Enfield Classic 350</h5>
+                                            <h5 class="card-title chng">Royal Enfield Classic 350</h5>
                                             <div class="d-flex justify-content-between mb-2">
                                                 <span><i class="fas fa-gas-pump me-1"></i> 35 kmpl</span>
                                                 <span><i class="fas fa-tachometer-alt me-1"></i> 15,000 km</span>
@@ -129,72 +129,8 @@
                                     </div>
                                 </div>
                                 
-                                <!-- Bike 2 -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="bike-card card h-100">
-                                        <div class="position-relative">
-                                            <img src="../Assets/activa.jpeg" class="card-img-top" alt="Bike">
-                                            <span class="badge bg-success position-absolute top-0 end-0 m-2">Available Now</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Honda Activa 6G</h5>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span><i class="fas fa-gas-pump me-1"></i> 45 kmpl</span>
-                                                <span><i class="fas fa-tachometer-alt me-1"></i> 8,500 km</span>
-                                            </div>
-                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>0.8 km away - HSR Layout</p>
-                                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                                <h4 class="mb-0">₹70/hr</h4>
-                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
-                                
-                                <!-- Bike 3 -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="bike-card card h-100">
-                                        <div class="position-relative">
-                                            <img src="../Assets/2022-TVS-Apache-RTR-160-Specs.jpg" class="card-img-top" alt="Bike">
-                                            <span class="badge bg-warning position-absolute top-0 end-0 m-2">Available in 1h</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">TVS Apache RTR 160</h5>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span><i class="fas fa-gas-pump me-1"></i> 40 kmpl</span>
-                                                <span><i class="fas fa-tachometer-alt me-1"></i> 12,300 km</span>
-                                            </div>
-                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>2.1 km away - Indiranagar</p>
-                                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                                <h4 class="mb-0">₹90/hr</h4>
-                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                                <!-- Bike 4 -->
-                                <div class="col-md-6 mb-4">
-                                    <div class="bike-card card h-100">
-                                        <div class="position-relative">
-                                            <img src="../Assets/bajaj-pulsar-ns200-bike.jpg" class="card-img-top" alt="Bike">
-                                            <span class="badge bg-success position-absolute top-0 end-0 m-2">Available Now</span>
-                                        </div>
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bajaj Pulsar NS200</h5>
-                                            <div class="d-flex justify-content-between mb-2">
-                                                <span><i class="fas fa-gas-pump me-1"></i> 35 kmpl</span>
-                                                <span><i class="fas fa-tachometer-alt me-1"></i> 9,800 km</span>
-                                            </div>
-                                            <p class="card-text"><i class="fas fa-map-marker-alt me-2"></i>1.5 km away - Jayanagar</p>
-                                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                                <h4 class="mb-0">₹95/hr</h4>
-                                                <button class="btn bg-primary text-white" onclick="showPage('confirmation-page')">Rent Now</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            
                             
                             <nav>
                                 <ul class="pagination justify-content-center">
@@ -363,6 +299,7 @@
 
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="../js/index.js"></script>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
       <script>
         // Page navigation
@@ -444,6 +381,19 @@
             initTrackingMap();
             showPage('home');
         }
+
+      
+
+        
+        
+
+
+
+
+        
+        
+        
+
     </script>
 
 </body>
